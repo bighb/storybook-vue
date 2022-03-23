@@ -1,32 +1,28 @@
 
 import Avatar from "./Avatar.vue";
 
-import { action } from '@storybook/addon-actions';
 
 export default {
   component: Avatar,
-  //👇 Our exports that end in "Data" are not stories.
-  excludeStories: /.*Data$/,
-  title: 'Avatar',
+  title: 'General/Avatar',
   //👇 Our events will be mapped in Storybook UI
   argTypes: {
-    onPinTask: {},
-    onArchiveTask: {},
+    backgroundColor: { control: 'color' },
+    size: { control: { type: 'select', options: ['small', 'medium', 'large'] } },
+    onClick: {},
   },
 };
+const Template = (args) => ({
+    // Components used in your story `template` are defined in the `components` object
+    components: { Avatar },
+    // The story's `args` need to be mapped into the template through the `setup()` method
+    setup() {
+      return { args };
+    },
+    // And then the `args` are bound to your component with `v-bind="args"`
+    template: '<avatar v-bind="args" />',
+  });
 
-export const actionsData = {
-  onPinTask: action('pin-task'),
-  onArchiveTask: action('archive-task'),
-};
-
-const Template = args => ({
-  components: { Avatar },
-  setup() {
-    return { args, ...actionsData };
-  },
-  template: '<Avatar v-bind="args" />',
-});
 export const Default = Template.bind({});
 Default.args = {
     title:'我是传入标题'

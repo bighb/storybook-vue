@@ -18,8 +18,7 @@
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "chromatic": "npx chromatic --project-token=be7c7dc17ce4"
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "core-js": "^3.6.5",
